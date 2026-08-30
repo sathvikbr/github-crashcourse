@@ -1,0 +1,8 @@
+name: action on issue
+on: issues
+jobs:
+    get_info:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Output event details
+              run: echp "$"{{ toJSON(github.event) }}

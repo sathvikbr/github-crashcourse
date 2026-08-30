@@ -36,4 +36,3 @@ jobs:
               run: |
                 echo "deploying code....."
                 echo "code deployed successfully!"
-
