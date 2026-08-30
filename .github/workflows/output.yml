@@ -1,0 +1,8 @@
+name: Output github metadata
+on: workflow_dispatch
+jobs:
+    output:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Output github data
+              run: echo "{{ github }}"
