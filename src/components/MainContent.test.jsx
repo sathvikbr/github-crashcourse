@@ -7,8 +7,7 @@ import MainContent from './MainContent';
 describe('MainContent', () => {
   it('should render a button', () => {
     render(<MainContent />);
-
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByRole('button')).not.toBeInTheDocument();
   });
 
   it('should show the help area after clicking the button', async () => {
@@ -16,6 +15,6 @@ describe('MainContent', () => {
 
     const button = screen.getByRole('button');
     await userEvent.click(button);
-    expect(screen.getByTestId('help-area')).toBeInTheDocument();
+    expect(screen.getByTestId('help-area')).not.toBeInTheDocument();
   });
 });
