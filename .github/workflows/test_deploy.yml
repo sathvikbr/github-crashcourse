@@ -1,0 +1,39 @@
+name: Test and deploy code
+on: push
+jobs:
+    lint:
+        runs-on : ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Install dependencies
+              run: npm ci
+            - name: Run lint
+              run: npm run lint
+
+    test:
+        needs: lint
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Install dependencies
+              run: npm ci
+            - name: Run tests
+              run : npm test
+    
+    Build_deploy:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+            - name: Install dependencies
+              run: npm ci
+            - name : Build code
+              run: npm run build
+            - name: Deploy code
+              run: |
+                echo "deploying code....."
+                echo "code deployed successfully!"
+
